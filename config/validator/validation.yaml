@@ -1,0 +1,38 @@
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotBlank:
+                groups: ['Default','create','edit']
+            - GreaterThanOrEqual:
+                value: 'today'
+                message: 'Date must be in future'
+                groups: ['Default','create','edit']
+        celsius:
+            - NotBlank:
+                  groups: ['Default','create','edit']
+            - Range:
+                  min: -100
+                  max: 100
+                  notInRangeMessage: 'its Hot(topic) or Cold(war)'
+                  groups: [ 'Default','create','edit' ]
+
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank:
+                groups: [ 'Default','create','edit' ]
+        Latitude:
+            - Range:
+                min: -90.0
+                max: 90.0
+                notInRangeMessage: 'we are in space now'
+                groups: [ 'Default','create','edit' ]
+        Longtitude:
+            - Range:
+                min: -180
+                max: 180
+                notInRangeMessage: 'we are in tectonic plates now'
+                groups: [ 'Default','create','edit' ]
+
+
+
