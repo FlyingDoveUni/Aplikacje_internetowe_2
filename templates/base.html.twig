@@ -3,9 +3,6 @@
 
     <head>
 
-
-
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -22,7 +19,6 @@
         {% endblock %}
 
 
-
         {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
         {% if frankenphp_hot_reload %}
         <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
@@ -31,6 +27,7 @@
         {% endif %}
     </head>
     <body>
+
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Aplikacja</a>
@@ -39,11 +36,16 @@
                     <a class="nav-link" href="{{ path('app_location_index') }}">
                         Cities
                     </a>
-                </div>
-                <div>
+
                     <a class="nav-link" href="{{ path('app_measurement_index') }}">
                         Mesa
                     </a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                    {% else %}
+                        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                    {% endif %}
+
                 </div>
             </div>
         </nav>

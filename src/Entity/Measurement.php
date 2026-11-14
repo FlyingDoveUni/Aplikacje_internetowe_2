@@ -23,7 +23,7 @@ class Measurement
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTime $date = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 0)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $celsius = null;
 
 #
